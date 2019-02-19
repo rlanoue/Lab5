@@ -35,16 +35,21 @@ public class Calculator
 	protected static int calculateTwoTokens(String[] tokens) throws NumberFormatException, CalculatorException
 	{
 		int a = Integer.parseInt(tokens[1]); // Throws NumberFormatException if the second token is not an int value.
-		// TODO: complete this...
-
-		if source input string array 0 = halve  
-				{
-			array place 1 / Math.floor()
-				}
-		if else source inout array 0 = negate 
-				{
-			array place 1 append - to the string 
-				}
+		// TODO: complete this...	
+			if (tokens[0].equals("halve")) 
+			{
+				a = (int) Math.floor((double) a);  
+			}
+			else if (tokens[0].equals("negate"))
+			{
+				a = -a; 
+			}
+			else 
+			{
+				throw new CalculatorException("Illegal Command"); 
+			}
+		
+		return a; 
 	}
 
 	/**
@@ -78,7 +83,36 @@ public class Calculator
 	protected static int calculateThreeTokens(String[] tokens)
 			throws ArithmeticException, NumberFormatException, CalculatorException
 	{
+		int a = Integer.parseInt(tokens[0]);
+		int b = Integer.parseInt(tokens[2]);
 		// TODO: complete this...
+		if (tokens[1].equals("+")) 
+		{
+			int c = a + b;
+			String response = String.format("%d + %d = %d", a, b, c);
+			System.out.println(response);
+			return c; 
+		}
+		else if (tokens[1].equals("-"))
+		{
+			a = -a; 
+		}
+		else if (tokens[1].equals("/"))
+		{
+			a = -a; 
+		}
+		else if (tokens[2].equals("0") && token[1].equals("/"))//didnt convert from string and isnt an int 
+		{
+			throw new NumberFormatException(); 
+		}
+		else if (tokens[1].equals("-"))
+		{
+			a = -a; 
+		}
+		else 
+		{
+			throw new CalculatorException("Illegal Command"); 
+		}
 	}
 
 	/**
@@ -112,115 +146,123 @@ public class Calculator
 	protected static int execute(String[] tokens) throws NumberFormatException, CalculatorException
 	{
 		// Condition on the number of tokens (number of strings in user input separated by spaces)
-		switch(tokens.length)
-		{
+		//switch(tokens.length)
+		//{
 		// TODO: complete this...
-		//case 1 : 
-
-		case 2 :
-
-
-			return MIN_VALUE; 
-		}
-
-
-	}
-
-	/**
-	 * Method to split up the user input. "Tokenizes" (converts a large string into string chunks) by splitting the
-	 * input string on spaces. The tokenized input is passed to execute to be processed. If the input is bad, execute
-	 * will throw an exception. If the input is valid, an int value will be returned. An int value of Integer.MIN_VALUE
-	 * is returned by execute if the program should quit.
-	 *
-	 * This method handles the exceptions thrown by execute. The string returned by this method is the final result
-	 * of processing a user input, whether it be a valid or invalid command.
-	 *
-	 * Valid commands are:
-	 * "quit" - the program should quit
-	 * "increment" - an int should be incremented by 1
-	 * "decrement" - an int should be decremented by 1
-	 * "+" - two numbers should be added
-	 * "-" - a number should be subtracted from another
-	 * "/" - a number should be divided by another
-	 *
-	 * @param input A String possibly containing a calculator command. Tokens of the command are separated by space.
-	 * e.g. A valid command would be "50 + 20". This will be split up (Tokenized) as an array of three Strings:
-	 * ["50", "+", "20"].
-	 * @return The following values are returned under the given conditions:
-	 * (1) "quit" - if the program should end
-	 * (2) "The result is: %d", where %d is replaced with the returned value of execute(tokens) - the command is
-	 * executed correctly and is not "quit".
-	 * (3) "Attempted to divide by 0. Please try again." - an ArithmeticException has been caught.
-	 * (4) "Input number cannot be parsed to an int. Please try again." - a NumberFormatException has been caught.
-	 * (5) "Calculator Exception, message is: %s", where %s is the message of a
-	 * CalculatorException - a CalculatorException has been caught.
-	 */
-	public static String parseAndExecute(String input)
-	{
-		// TODO: complete this...
-		// Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
-		// method will catch those exceptions and respond accordingly.
-
-		if (input.equalsIgnoreCase("quit"))
+		case 1 : 	if (input.equalsIgnoreCase("quit"))
 		{
 			return "quit"; 
+		} 
+
+		case 2 : 
+
+		case 3 :
+
+		case 4: 
+			//return MIN_VALUE; 
 		}
 
-		String[] tokens = input.split(" "); 
 
-
-
-
-		if (tokens[0] = "negate")
+		for (int i = 0; i < tokens.length; i++) 
 		{
-			calculateTwoTokens(tokens);
-		}
-
-		if (tokens[0] = "halve")
-		{
-			calculateTwoTokens(tokens);
-		}
-
-		if (tokens[0] = "+")
-		{
-			calculateThreeTokens(tokens); 
-		}
-		if (tokens[0] = "-")
-		{
-			calculateThreeTokens(tokens); 
-		}
-		if (tokens[0] = "/")
-		{
-			calculateThreeTokens(tokens); 
-		}
-
-
-		try {
-			if (tokens[0] = "increment")
+			if (tokens[0].equals("increment")) 
+				calculateTwoTokens(tokens);
+			else if (tokens[0].equals("decrement"))
 			{
 				calculateTwoTokens(tokens);
 			}
-			else if (tokens[0] = "decrement")
+			else if (tokens[0].equals("negate"))
 			{
 				calculateTwoTokens(tokens);
 			}
+			else if (tokens[0].equals("halve"))
+			{
+				calculateTwoTokens(tokens);
+			}
+			else if (tokens[1].equals("+"))
+			{
+				calculateThreeTokens(tokens); 
+			}
+			else if (tokens[1].equals("-"))
+			{
+				calculateThreeTokens(tokens); 
+			}
+			else if (tokens[1].equals("/"))
+			{
+				calculateThreeTokens(tokens); 
+			}
+			else 
+			{
+				return 0; 
+			}}
+			//int last = 0; 
+			//return last; 
 
 		}
-		catch (ArithmeticException e)
+
+		/**
+		 * Method to split up the user input. "Tokenizes" (converts a large string into string chunks) by splitting the
+		 * input string on spaces. The tokenized input is passed to execute to be processed. If the input is bad, execute
+		 * will throw an exception. If the input is valid, an int value will be returned. An int value of Integer.MIN_VALUE
+		 * is returned by execute if the program should quit.
+		 *
+		 * This method handles the exceptions thrown by execute. The string returned by this method is the final result
+		 * of processing a user input, whether it be a valid or invalid command.
+		 *
+		 * Valid commands are:
+		 * "quit" - the program should quit
+		 * "increment" - an int should be incremented by 1
+		 * "decrement" - an int should be decremented by 1
+		 * "+" - two numbers should be added
+		 * "-" - a number should be subtracted from another
+		 * "/" - a number should be divided by another
+		 *
+		 * @param input A String possibly containing a calculator command. Tokens of the command are separated by space.
+		 * e.g. A valid command would be "50 + 20". This will be split up (Tokenized) as an array of three Strings:
+		 * ["50", "+", "20"].
+		 * @return The following values are returned under the given conditions:
+		 * (1) "quit" - if the program should end
+		 * (2) "The result is: %d", where %d is replaced with the returned value of execute(tokens) - the command is
+		 * executed correctly and is not "quit".
+		 * (3) "Attempted to divide by 0. Please try again." - an ArithmeticException has been caught.
+		 * (4) "Input number cannot be parsed to an int. Please try again." - a NumberFormatException has been caught.
+		 * (5) "Calculator Exception, message is: %s", where %s is the message of a
+		 * CalculatorException - a CalculatorException has been caught.
+		 */
+		public static String parseAndExecute(String input)
 		{
-			String ArithmeticExceptionMessage = "Attempted to divide by 0. Please try again."; 
-			return ArithmeticExceptionMessage;
+			// TODO: complete this...
+			// Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
+			// method will catch those exceptions and respond accordingly.
+
+			String[] tokens = input.split(" "); 
+
+			int result; 
+
+			try 
+			{
+				result = execute(tokens); 
+				//toString(int last);
+
+				//change the result given from execute into a string 
+			}
+
+			catch (ArithmeticException e)
+			{
+				String ArithmeticExceptionMessage = "Attempted to divide by 0. Please try again."; 
+				return ArithmeticExceptionMessage;
+			}
+			catch (NumberFormatException e)
+			{
+				String NumberFormatMessage = "Input number cannot be parsed to an int. Please try again.";
+				return NumberFormatMessage; 
+			}
+			catch (CalculatorException e)
+			{
+				return String.format("Calculator Exception, message is: %s", e.getMessage());
+				//return; 
+			}
+
+			return input; 
 		}
-		catch (NumberFormatException e)
-		{
-			String NumberFormatMessage = "Input number cannot be parsed to an int. Please try again.";
-			return NumberFormatMessage; 
-		}
-		catch (CalculatorException e)
-		{
-			return String.format("Calculator Exception, message is: %s", e.getMessage());
-			//return; 
-		}
-	
 	}
-}
