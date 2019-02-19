@@ -36,19 +36,19 @@ public class Calculator
 	{
 		int a = Integer.parseInt(tokens[1]); // Throws NumberFormatException if the second token is not an int value.
 		// TODO: complete this...	
-			if (tokens[0].equals("halve")) 
-			{
-				a = (int) Math.floor((double) a);  
-			}
-			else if (tokens[0].equals("negate"))
-			{
-				a = -a; 
-			}
-			else 
-			{
-				throw new CalculatorException("Illegal Command"); 
-			}
-		
+		if (tokens[0].equals("halve")) 
+		{
+			a = (int) Math.floor((double) a);  
+		}
+		else if (tokens[0].equals("negate"))
+		{
+			a = -a; 
+		}
+		else 
+		{
+			throw new CalculatorException("Illegal Command"); 
+		}
+
 		return a; 
 	}
 
@@ -95,19 +95,17 @@ public class Calculator
 		}
 		else if (tokens[1].equals("-"))
 		{
-			a = -a; 
+			int c = a - b;
+			String response = String.format("%d - %d = %d", a, b, c);
+			System.out.println(response);
+			return c; 
 		}
 		else if (tokens[1].equals("/"))
 		{
-			a = -a; 
-		}
-		else if (tokens[2].equals("0") && token[1].equals("/"))//didnt convert from string and isnt an int 
-		{
-			throw new NumberFormatException(); 
-		}
-		else if (tokens[1].equals("-"))
-		{
-			a = -a; 
+			int c = a / b;
+			String response = String.format("%d / %d = %d", a, b, c);
+			System.out.println(response);
+			return c; 
 		}
 		else 
 		{
@@ -146,57 +144,31 @@ public class Calculator
 	protected static int execute(String[] tokens) throws NumberFormatException, CalculatorException
 	{
 		// Condition on the number of tokens (number of strings in user input separated by spaces)
-		//switch(tokens.length)
-		//{
-		// TODO: complete this...
-		case 1 : 	if (input.equalsIgnoreCase("quit"))
+		switch(tokens.length)
 		{
-			return "quit"; 
-		} 
+		// TODO: complete this...
+		case 1 : 
+			if (tokens[0].equalsIgnoreCase("quit"))
+			{
+				return Integer.MIN_VALUE;
+			} 
+			else 
+			{
+				throw new CalculatorException("Illegal Command");
+			}
 
 		case 2 : 
 
+			return calculateTwoTokens(tokens);
+
+
 		case 3 :
-
-		case 4: 
-			//return MIN_VALUE; 
-		}
+			return calculateThreeTokens(tokens); 
 
 
-		for (int i = 0; i < tokens.length; i++) 
-		{
-			if (tokens[0].equals("increment")) 
-				calculateTwoTokens(tokens);
-			else if (tokens[0].equals("decrement"))
-			{
-				calculateTwoTokens(tokens);
-			}
-			else if (tokens[0].equals("negate"))
-			{
-				calculateTwoTokens(tokens);
-			}
-			else if (tokens[0].equals("halve"))
-			{
-				calculateTwoTokens(tokens);
-			}
-			else if (tokens[1].equals("+"))
-			{
-				calculateThreeTokens(tokens); 
-			}
-			else if (tokens[1].equals("-"))
-			{
-				calculateThreeTokens(tokens); 
-			}
-			else if (tokens[1].equals("/"))
-			{
-				calculateThreeTokens(tokens); 
-			}
-			else 
-			{
-				return 0; 
-			}}
-			//int last = 0; 
-			//return last; 
+		default:  
+			throw new CalculatorException("Illegal Token Length"); 
+
 
 		}
 
@@ -234,28 +206,41 @@ public class Calculator
 			// TODO: complete this...
 			// Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
 			// method will catch those exceptions and respond accordingly.
+			
+			
+			
+			String[] split = input.split(" "); 
 
-			String[] tokens = input.split(" "); 
-
+			if (split[0].equalsIgnoreCase("quit"))
+			{
+				
+			}
+			
 			int result; 
 
+			String ArithmeticExceptionMessage = "help";  
+			
 			try 
 			{
 				result = execute(tokens); 
+				String done = result.toString(); 
 				//toString(int last);
+				//String help = Integer.parseInt(result);
 
 				//change the result given from execute into a string 
 			}
+			//result.toString(); 
 
 			catch (ArithmeticException e)
 			{
-				String ArithmeticExceptionMessage = "Attempted to divide by 0. Please try again."; 
-				return ArithmeticExceptionMessage;
+				
+				//return "Attempted to divide by 0. Please try again.";
+				return ArithmeticExceptionMessage; 
 			}
 			catch (NumberFormatException e)
 			{
-				String NumberFormatMessage = "Input number cannot be parsed to an int. Please try again.";
-				return NumberFormatMessage; 
+				return "Input number cannot be parsed to an int. Please try again.";
+				//return NumberFormatMessage; 
 			}
 			catch (CalculatorException e)
 			{
@@ -263,6 +248,6 @@ public class Calculator
 				//return; 
 			}
 
-			return input; 
+			//return input; 
 		}
-	}
+	}}
