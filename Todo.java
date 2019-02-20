@@ -21,7 +21,6 @@ Tasks:
 14. complete calculate3Tokens
 15. complete execute method
 16. complete parseandExecute method
-17. 
 
 Estimated Time (minutes):
 1. 30
@@ -41,22 +40,24 @@ Estimated Time (minutes):
 15. 40
 16. 20
 
+
 Actual Time (minutes):
-1. 
-2. 
-3. 
-4. 
-5. 
-6. 
-7. 10
-8. 7 + 2
-9. 
-10. 
-11. 
+1. 3
+2. 3
+3. 5
+4. 4
+5. 4
+6. ?
+7. 3
+8. 2
+9. 4
+10. 4
+11. 3
 12. 
 13. 16
-14. 
-15. 10+ 10 +  
-16. 25 + 10 + 9
+14. 8
+15. 10+ 10 +  7
+16. 25 + 10 + 9 + 5  + 11
+
 
 */}

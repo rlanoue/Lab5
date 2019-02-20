@@ -38,7 +38,7 @@ public class Calculator
 		// TODO: complete this...	
 		if (tokens[0].equals("halve")) 
 		{
-			a = (int) Math.floor((double) a);  
+			a = (int) Math.floor((double) a / 2);  
 		}
 		else if (tokens[0].equals("negate"))
 		{
@@ -169,7 +169,7 @@ public class Calculator
 		default:  
 			throw new CalculatorException("Illegal Token Length"); 
 
-
+		}
 		}
 
 		/**
@@ -213,21 +213,43 @@ public class Calculator
 
 			if (split[0].equalsIgnoreCase("quit"))
 			{
-				
+				return "quit"; 
 			}
 			
-			int result; 
+			//int result; 
 
 			String ArithmeticExceptionMessage = "help";  
 			
 			try 
 			{
-				result = execute(tokens); 
-				String done = result.toString(); 
+				//result = execute(tokens); 
+				//String done = valueOf(result);
+				//String done = result.toString(); 
 				//toString(int last);
 				//String help = Integer.parseInt(result);
 
 				//change the result given from execute into a string 
+				
+				
+				int resultant; 
+				
+				if (split[0].equals("increment"))
+				{
+					//resulant++; 
+					resultant = Integer.parseInt(split[1]) + 1;
+				}
+				else if (split[0].equals("decrement"))
+				{
+					resultant = Integer.parseInt(split[1]) - 1;
+				}
+				else
+				{
+					resultant = execute(split); 
+				}
+				return String.format("The result is: %d", resultant); 
+				
+						
+						//String.format("The result is: %d", resultant);
 			}
 			//result.toString(); 
 
@@ -250,4 +272,4 @@ public class Calculator
 
 			//return input; 
 		}
-	}}
+	}
