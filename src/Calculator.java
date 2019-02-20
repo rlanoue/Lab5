@@ -218,7 +218,7 @@ public class Calculator
 			
 			//int result; 
 
-			String ArithmeticExceptionMessage = "help";  
+			String ArithmeticExceptionMessage = "Attempted to divide by 0. Please try again.";  
 			
 			try 
 			{
